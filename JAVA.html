@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
+<script src="sketch.js"></script>
+	<meta charset="UTF-8">
+	<title>JoinTheFrontlines</title>
+	<link href="Java.css" rel="stylesheet" type="text/css">
+</head>
+    <body>
+    
+        <div id="overit">
+          </div>    
+        <div id="box">
+        <header>
+            <h1>For Democracy!!!</h1>
+        </header>
+        <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="https://helldivers.fandom.com/wiki/Bugs">Bugs</a></li>
+          <li><a href="https://helldivers.fandom.com/wiki/Super_Earth">Super Earth</a></li>
+          <li><a href="https://helldivers.fandom.com/wiki/Cyborgs">Automatons</a></li>
+        </ul>
+        </nav>
+       
+        
+        <main>
+            <h2 class="head2">Welcome Helldivers</h2>
+            <img  class="mcdonalds" src="Liberty1.webp" alt="1" />
+    <p> <a href="https://www.youtube.com/watch?v=oD3pxbG9YYI">Join The Frontlines!</a>“HELLDIVERS™ 2 is a 3rd person squad-based shooter that sees the elite forces of the Helldivers battling to win an intergalactic struggle to rid the galaxy of the rising alien threats. From a 3rd person perspective, players use a variety of weapons (pistols, machine guns, flamethrowers) and stratagems (turrets, airstrikes, etc.) to shoot and kill the alien threats. Players can also aim down the sights for a more accurate 1st person camera view. Combat is accompanied by frequent sprays of blood and dismemberment as players exterminate the alien forces or players and squad mates are hit by environmental explosions or friendly fire. Enemy encampments and battlefield environments depict bloodstains and dismembered corpses.”</p>
+    
+
+    <p> <a href="https://www.youtube.com/watch?v=S9STizATKjE">More info</a>. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius tempora, iure autem deleniti repellendus cum quisquam similique quidem dolore impedit, voluptas ea, odio ipsum laboriosam debitis maxime illo natus repudiandae neque! Veniam quae, eos delectus animi aliquam vero eveniet tempora itaque, officia similique dolorum autem temporibus ratione adipisci asperiores aspernatur blanditiis repudiandae! Ipsum ex voluptatum at ea totam aliquid, aperiam, natus quod quis, perspiciatis suscipit. Vero cum vitae reprehenderit error sapiente fugit dolores, vel incidunt sit ut minus et, illum voluptate tempore voluptas ab reiciendis saepe iusto accusamus adipisci omnis? Labore, dignissimos praesentium nemo exercitationem ut error culpa laudantium harum?</p>
+
+    <p> <a href="https://helldivers.fandom.com/wiki/Helldivers_2">Recruitment</a>. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius tempora, iure autem deleniti repellendus cum quisquam similique quidem dolore impedit, voluptas ea, odio ipsum laboriosam debitis maxime illo natus repudiandae neque! Veniam quae, eos delectus animi aliquam vero eveniet tempora itaque, officia similique dolorum autem temporibus ratione adipisci asperiores aspernatur blanditiis repudiandae! Ipsum ex voluptatum at ea totam aliquid, aperiam, natus quod quis, perspiciatis suscipit. Vero cum vitae reprehenderit error sapiente fugit dolores, vel incidunt sit ut minus et, illum voluptate tempore voluptas ab reiciendis saepe iusto accusamus adipisci omnis? Labore, dignissimos praesentium nemo exercitationem ut error culpa laudantium harum?</p>
+</main>
+<aside>
+    <h2 class="underline">Are you ready for the fight?</h2>
+    <p class="italic">Join the fight! Are you ready to fight against the enemies?!! Enlist now and join us!</p>
+    <p>Remember we do not except treason, if you are seen running away from combat we will deal with you on the field. If you or a team mate is killed you die for democracy and freedom, there is no such thing as team killing.</p>
+</aside>
+
+<footer> 
+    <p>Super Earth</p>
+</footer>
+        </div>
+        <div id="movecanvas"></div>
+<script> 
+// this class describes the properties of a single particle.
+class Particle {
+// setting the co-ordinates, radius and the
+// speed of a particle in both the co-ordinates axes.
+  constructor(){
+    this.x = random(0,width);
+    this.y = random(0,height);
+    this.r = random(1,8);
+    this.xSpeed = random(-2,2);
+    this.ySpeed = random(-1,1.5);
+  }
+
+// creation of a particle.
+  createParticle() {
+    noStroke();
+    fill('rgba(200,169,169,0.5)');
+    circle(this.x,this.y,this.r);
+  }
+
+// setting the particle in motion.
+  moveParticle() {
+    if(this.x < 0 || this.x > width)
+      this.xSpeed*=-1;
+    if(this.y < 0 || this.y > height)
+      this.ySpeed*=-1;
+    this.x+=this.xSpeed;
+    this.y+=this.ySpeed;
+  }
+
+// this function creates the connections(lines)
+// between particles which are less than a certain distance apart
+  joinParticles(particles) {
+    particles.forEach(element =>{
+      let dis = dist(this.x,this.y,element.x,element.y);
+      if(dis<85) {
+        stroke('rgba(255,255,255,0.04)');
+        line(this.x,this.y,element.x,element.y);
+      }
+    });
+  }
+}
+
+// an array to add multiple particles
+let particles = [];
+
+function setup() {
+  createCanvas(720, 400);
+  for(let i = 0;i<width/10;i++){
+    particles.push(new Particle());
+  }
+}
+
+function draw() {
+  background('#0f0f0f');
+  for(let i = 0;i<particles.length;i++) {
+    particles[i].createParticle();
+    particles[i].moveParticle();
+    particles[i].joinParticles(particles.slice(i));
+  }
+}
+
+        </script>
+</body>
