@@ -1,0 +1,114 @@
+/* Default Layout (Mobile) */
+
+body {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 1em;
+	background-color: crimson;
+}
+
+h1 {
+	font-family: Graduate, Georgia, "Times New Roman", Times, serif;
+	text-transform: uppercase;
+	color: black;
+	text-shadow: black 1px 1px 1px;
+	font-size: 3em;
+	margin: 0 0 .25em 0;
+	padding: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+nav a {
+	color: black;
+	font-family: Graduate, Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	text-decoration: none;
+	font-style: italic;
+	text-transform: uppercase;
+	border: 1px solid #999;
+	background-color: #eee;
+	border-radius: .5em;
+	padding: 1em;
+}
+
+h2 {
+	font-family: Graduate, Georgia, "Times New Roman", Times, serif;
+	color: black;
+	text-shadow: black 1px 1px 1px;
+	font-weight: normal;
+	margin: 0;
+	padding: .25em 0 .25em 0;
+	border-bottom: 1px solid #ccc;
+}
+
+#sword{
+	display: block;
+	width: 50%;
+	margin: auto;
+}
+
+#Man {
+	display:none;
+  }
+
+  #goku{
+	display:none;
+  }
+
+  @media all and (min-width: 30rem){
+	body{background-color: green;}
+	h1 { color: white; }
+	h2{color: white;}
+	p{color:white;}
+	#sword {
+		width: 50%;
+		display:none;
+	  }
+	  #Man{
+		display:none;
+	  }
+	  #goku{
+		margin: auto;
+		display: block;
+		width: 65%;
+	  }
+  }
+
+  @media all and (min-width: 50rem){
+	body{background-color:lightblue;}
+	h1{color: grey};
+	h2{color: grey;}
+	p{color:grey;}
+	#sword {
+		width: 50%;
+		display:none;
+	  }
+	  #Man{
+		margin: auto;
+		width: 50%;
+		display:block;
+	  }
+	#goku{
+		display: none;
+	  }
+}
+
+@media all and (min-width: 80rem){
+	body{background-color: lightcoral;}
+	h1 { color: whitesmoke; padding-bottom: .1rem; }
+	h2{color:whitesmoke;}
+	p{color: whitesmoke;}
+	#sword {
+		width: 50%;
+		margin: auto;
+		display:block;
+	  }
+	  #Man{
+		display:none;
+	  }
+	  #goku{
+		display: none;
+	  }
+  }        
+
+/*  Media Queries (responsive to screen width) */
